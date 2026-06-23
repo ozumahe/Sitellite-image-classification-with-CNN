@@ -1,3 +1,4 @@
+# Initializes the satellite model and all the utils needed for the app.
 import torch # type: ignore
 import torch.nn as nn # type: ignore
 from torchvision import transforms # type: ignore
@@ -121,8 +122,12 @@ print(f"{SATELLITE_MODEL.__class__.__name__} on device --> {next(SATELLITE_MODEL
 
 # Load saved model parameters
 MODEL_SAVED_PATH = Path(__file__).parents[1] / "assets" / "weights" / 'best_model.pt'
+
+if not MODEL_SAVED_PATH.exists():
+    MODEL_SAVED_PATH = Path(__file__).parent / 'best_model.pt'
+    
 state_dict = torch.load(MODEL_SAVED_PATH, map_location=DEVICE)
 
+# Set the loaded state_dict to the model and set the model to evaluation mode.
 _ = SATELLITE_MODEL.load_state_dict(state_dict)
 _ = SATELLITE_MODEL.eval()
-
