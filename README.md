@@ -686,5 +686,5 @@ from app.satellite_cnn_module import SATELLITE_MODEL, TRANSFORM, CLASS_NAMES
 
 ---
 
-**Last Updated:** August 2024  
+**Last Updated:** August 2025  
 **For detailed implementation information and training methodology, refer to [K12455349.ipynb](K12455349.ipynb)**
